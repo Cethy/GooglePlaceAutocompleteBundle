@@ -2,6 +2,7 @@ Cethyworks\GooglePlaceAutocompleteBundle
 ===
 Provides a Google Place Autocomplete Type, the most minimalist, unobtrusive way possible.
 
+[![CircleCI](https://circleci.com/gh/Cethy/GooglePlaceAutocompleteBundle/tree/master.svg?style=shield)](https://circleci.com/gh/Cethy/GooglePlaceAutocompleteBundle/tree/master)
 
 ## How to use
 1\. Update (optionally) your `config.yml` with :
