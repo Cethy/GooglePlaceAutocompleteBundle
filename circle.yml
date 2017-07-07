@@ -1,0 +1,12 @@
+machine:
+  php:
+    version: 5.6.17
+
+dependencies:
+  pre:
+    - pecl install xdebug
+    - echo "date.timezone = \"Europe/Paris\"" > /opt/circleci/php/$(phpenv global)/etc/conf.d/date.ini
+
+test:
+  override:
+    - vendor/bin/phpunit -c phpunit.xml.dist --coverage-html "${CIRCLE_ARTIFACTS}/coverage/html"

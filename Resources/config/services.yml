@@ -1,0 +1,24 @@
+services:
+    # Factories
+    cethyworks.simple_google_place_autocomplete.form_type.factory:
+        class: Cethyworks\ContentInjectorBundle\Factory\TwigContentInjectorFormTypeFactory
+        arguments:
+            - "@cethyworks.simple_google_place_autocomplete.listener.factory"
+            - "@cethyworks_content_injector.listener.registerer"
+
+    cethyworks.simple_google_place_autocomplete.listener.factory:
+        class: Cethyworks\ContentInjectorBundle\Factory\TwigContentInjectorListenerFactory
+        arguments:
+            - "@cethyworks_content_injector.simple_injector"
+            - "@twig"
+            - { "google_api_key": "%cethyworks.google_place_autocomplete.google_api_key%" }
+
+    # Form Type
+    cethyworks.simple_google_place_autocomplete.type:
+        class: Cethyworks\GooglePlaceAutocompleteBundle\Form\SimpleGooglePlaceAutocompleteType
+        factory: cethyworks.simple_google_place_autocomplete.form_type.factory:createFormType
+        arguments:
+            - "Cethyworks\\GooglePlaceAutocompleteBundle\\Form\\SimpleGooglePlaceAutocompleteType"
+            - "@@CethyworksGooglePlaceAutocompleteBundle/Resources/assets/twig/simple_google_place_autocomplete_js.html.twig"
+        tags:
+            - { name: form.type, alias: simple_google_place_autocomplete }
