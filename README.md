@@ -4,6 +4,28 @@ Provides a Google Place Autocomplete Type, the most minimalist, unobtrusive way 
 
 [![CircleCI](https://circleci.com/gh/Cethy/GooglePlaceAutocompleteBundle/tree/master.svg?style=shield)](https://circleci.com/gh/Cethy/GooglePlaceAutocompleteBundle/tree/master)
 
+
+## Install
+
+1\. Composer require
+
+    $ composer require cethyworks/google-place-autocomplete-bundle 
+
+2\. Register bundles
+
+    // AppKernel.php
+    class AppKernel extends Kernel
+    {
+        public function registerBundles()
+        {
+            $bundles = [
+                // ...
+                new Cethyworks\ContentInjectorBundle\CethyworksContentInjectorBundle(),
+                new Cethyworks\GoogleMapDisplayBundle\CethyworksGoogleMapDisplayBundle(),
+            ];
+            // ...
+
+
 ## How to use
 1\. Update (optionally) your `config.yml` with :
 
