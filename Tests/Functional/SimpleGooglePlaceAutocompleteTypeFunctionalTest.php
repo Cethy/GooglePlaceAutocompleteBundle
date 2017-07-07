@@ -51,7 +51,7 @@ class SimpleGooglePlaceAutocompleteTypeFunctionalTest extends WebTestCase
     }
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap&key=foo_api_key"
         async defer></script>
 
 EOF;
