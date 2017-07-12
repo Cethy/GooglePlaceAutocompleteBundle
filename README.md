@@ -21,7 +21,7 @@ Provides a Google Place Autocomplete Type, the most minimalist, unobtrusive way 
             $bundles = [
                 // ...
                 new Cethyworks\ContentInjectorBundle\CethyworksContentInjectorBundle(),
-                new Cethyworks\GoogleMapDisplayBundle\CethyworksGoogleMapDisplayBundle(),
+                new Cethyworks\GooglePlaceAutocompleteBundle\CethyworksGooglePlaceAutocompleteBundle(),
             ];
             // ...
 
