@@ -12,12 +12,20 @@
       var inputAddressComponents = document.getElementById(formId +'_address_components');
 
       var autocomplete = new google.maps.places.Autocomplete(userInput);
+      var placeService = new google.maps.places.PlacesService(userInput);
 
       google.maps.event.addListener(autocomplete, 'place_changed', function() {
         var place = autocomplete.getPlace();
 
         inputName.value              = place.name;
         inputAddressComponents.value = JSON.stringify(place.address_components);
+
+        // try to clean name
+        if(place.place_id) {
+          placeService.getDetails({placeId: place.place_id}, function (result) {
+            inputName = result.name;
+          });
+        }
       });
     }
   }
