@@ -1,0 +1,9 @@
+Cethyworks\GooglePlaceAutocompleteBundle\Model\Place:
+    type: embeddable
+    fields:
+        name: {type: string}
+        streetNumber: {type: string, nullable: true}
+        route: {type: string, nullable: true}
+        locality: {type: string, nullable: true}
+        postalCode: {type: string, nullable: true}
+        country: {type: string, nullable: true}

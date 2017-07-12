@@ -13,7 +13,7 @@ services:
             - "@twig"
             - { "google_api_key": "%cethyworks.google_place_autocomplete.google_api_key%" }
 
-    # Form Type
+    # Form Type (simple)
     cethyworks.simple_google_place_autocomplete.type:
         class: Cethyworks\GooglePlaceAutocompleteBundle\Form\SimpleGooglePlaceAutocompleteType
         factory: cethyworks.simple_google_place_autocomplete.form_type.factory:createFormType
@@ -22,3 +22,13 @@ services:
             - "@@CethyworksGooglePlaceAutocompleteBundle/Resources/assets/twig/simple_google_place_autocomplete_js.html.twig"
         tags:
             - { name: form.type, alias: simple_google_place_autocomplete }
+
+    # Form Type (complex)
+    cethyworks.complex_google_place_autocomplete.type:
+        class: Cethyworks\GooglePlaceAutocompleteBundle\Form\ComplexGooglePlaceAutocompleteType
+        factory: cethyworks.simple_google_place_autocomplete.form_type.factory:createFormType
+        arguments:
+            - "Cethyworks\\GooglePlaceAutocompleteBundle\\Form\\ComplexGooglePlaceAutocompleteType"
+            - "@@CethyworksGooglePlaceAutocompleteBundle/Resources/assets/twig/complex_google_place_autocomplete_js.html.twig"
+        tags:
+            - { name: form.type, alias: complex_google_place_autocomplete }
