@@ -37,12 +37,16 @@ class ComplexGooglePlaceAutocompleteDataTransformer implements DataTransformerIn
      * Transforms from form view to entity value
      *
      * @param array $value
-     * @return Place
+     * @return null|Place
      *
      * @throws TransformationFailedException When the transformation fails.
      */
     public function reverseTransform($value)
     {
+        if(! $value['name']) {
+            return null;
+        }
+        
         $addressComponents = json_decode($value['address_components'], true);
 
         $placeArray = array_merge([
