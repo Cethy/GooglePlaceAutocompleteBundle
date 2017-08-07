@@ -1,0 +1,4 @@
+{% set callback = (callback is defined ? callback : 'initMapAutocomplete') %}
+{% set google_api_key = (google_api_key ? ('&key='~ google_api_key)) %}
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback={{ callback }}{{ google_api_key|raw }}"
+        async defer></script>

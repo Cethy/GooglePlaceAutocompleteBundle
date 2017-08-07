@@ -9,7 +9,7 @@ Provides a Google Place Autocomplete Type, the most minimalist, unobtrusive way 
 
 1\. Composer require
 
-    $ composer require cethyworks/google-place-autocomplete-bundle 
+    $ composer require cethyworks/google-place-autocomplete-bundle
 
 2\. Register bundles
 
@@ -35,7 +35,7 @@ Provides a Google Place Autocomplete Type, the most minimalist, unobtrusive way 
 
 2\. Use `Cethyworks\GooglePlaceAutocompleteBundle\Form\SimpleGooglePlaceAutocompleteType` into your forms ;
   
-3\. That's it.
+3\. Done !
 
 
 ## Get more data from the Google Place API
@@ -44,7 +44,6 @@ If you need more info from the place API results, you can use the `ComplexGoogle
 Instead of returning a simple `string`, this Type return a `Cethyworks\GooglePlaceAutocompleteBundle\Model\Place` object.   
 
 In order to persist it, the bundle provides doctrine mapping, use it like this in your entities :
-
 
     use Cethyworks\GooglePlaceAutocompleteBundle\Model\Place;
     use Doctrine\ORM\Mapping as ORM;
@@ -68,20 +67,11 @@ In order to persist it, the bundle provides doctrine mapping, use it like this i
     }
 
 ## How it works
-When a `Cethyworks\GooglePlaceAutocompleteBundle\Form\SimpleGooglePlaceAutocompleteType` is used, 
-it registers a listener (`Cethyworks\ContentInjectorBundle\Form\Listener\SimpleFormViewAwareListener`) on the `kernel.response` event 
-which will inject the javascript code needed (with the input ids & the google api_key) into the `Response` automatically.
-
-## Todo
-- Test `Complex` behavior
-    - Form\ComplexGooglePlaceAutocompleteType
-    - Form\DataTransformer\ComplexGooglePlaceAutocompleteDataTransformer
-    - Model\Place
-    - Resources\config\doctrine-mapping\ (?)
-    - CethyworksGooglePlaceAutocompleteBundle
-- Provide Place mappings for MongoDB & CouchDB
-
+When either a `SimpleGooglePlaceAutocompleteType` or a `ComplexGooglePlaceAutocompleteType` are used, 
+it registers 2 [`InjectorCommands`](https://github.com/Cethy/ContentInjectorBundle#cethyworkscontentinjectorbundle) (one for the library call, one for the input controls) 
+which will inject the necessary javascript code (with the input id & the google api_key) into the `Response` automatically.
 
 ## Additional information
-[Google Place Autocomplete Documentation](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete)
+[Cethyworks\ContentInjectorBundle](https://github.com/Cethy/ContentInjectorBundle)
 
+[Google Place Autocomplete Documentation](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete)

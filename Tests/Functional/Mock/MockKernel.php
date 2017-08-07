@@ -1,6 +1,6 @@
 <?php
 
-namespace Cethyworks\GooglePlaceAutocompleteBundle\Tests\Dummy;
+namespace Cethyworks\GooglePlaceAutocompleteBundle\Tests\Functional\Mock;
 
 use Cethyworks\ContentInjectorBundle\CethyworksContentInjectorBundle;
 use Cethyworks\GooglePlaceAutocompleteBundle\CethyworksGooglePlaceAutocompleteBundle;
@@ -16,7 +16,7 @@ use Symfony\Component\HttpKernel\Kernel;
  * Date: 07/07/2017
  * Time: 10:31
  */
-class DummyKernel extends Kernel
+class MockKernel extends Kernel
 {
 
     /**
@@ -42,12 +42,12 @@ class DummyKernel extends Kernel
 
     public function getCacheDir()
     {
-        return dirname(__DIR__).'/../var/cache/'.$this->getEnvironment();
+        return dirname(__DIR__).'/../../var/cache/'.$this->getEnvironment();
     }
 
     public function getLogDir()
     {
-        return dirname(__DIR__).'/../var/logs';
+        return dirname(__DIR__).'/../../var/logs';
     }
 
     /**

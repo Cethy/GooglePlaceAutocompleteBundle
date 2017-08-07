@@ -1,15 +1,8 @@
 <script>
-  function initMap() {
-    var inputs = {{ input_ids|json_encode|raw }};
+  function initMapAutocomplete() {
+    var inputId = "{{ form_view.vars['id'] }}";
+    var input = /** @type {!HTMLInputElement} */(document.getElementById(inputId));
 
-    for(var i=0;i<inputs.length;i++) {
-      var input = /** @type {!HTMLInputElement} */(
-        document.getElementById(inputs[i])
-      );
-
-      new google.maps.places.Autocomplete(input);
-    }
+    new google.maps.places.Autocomplete(input);
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap{{ (google_api_key ? ('&key='~ google_api_key))|raw }}"
-        async defer></script>

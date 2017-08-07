@@ -1,36 +1,27 @@
 <script>
-  function initMap() {
-    var formIds = {{ input_ids|json_encode|raw }};
+  function initMapAutocomplete() {
+    var formId = "{{ form_view.vars['id'] }}";
 
-    for(var i=0;i<formIds.length;i++) {
-      var formId = formIds[i];
+    var userInput = /** @type {!HTMLInputElement} */(document.getElementById(formId +'_autocomplete'));
 
-      var userInput = /** @type {!HTMLInputElement} */(
-        document.getElementById(formId +'_autocomplete')
-      );
-      var inputName              = document.getElementById(formId +'_name');
-      var inputAddressComponents = document.getElementById(formId +'_address_components');
+    var inputName              = document.getElementById(formId +'_name');
+    var inputAddressComponents = document.getElementById(formId +'_address_components');
 
-      var autocomplete = new google.maps.places.Autocomplete(userInput);
-      var placeService = new google.maps.places.PlacesService(userInput);
+    var autocomplete = new google.maps.places.Autocomplete(userInput);
+    var placeService = new google.maps.places.PlacesService(userInput);
 
-      google.maps.event.addListener(autocomplete, 'place_changed', function() {
-        var place = autocomplete.getPlace();
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      var place = autocomplete.getPlace();
 
-        inputName.value              = place.name;
-        inputAddressComponents.value = JSON.stringify(place.address_components);
+      inputName.value              = place.name;
+      inputAddressComponents.value = JSON.stringify(place.address_components);
 
-        // try to clean name
-        if(place.place_id) {
-          placeService.getDetails({placeId: place.place_id}, function (result) {
-            inputName = result.name;
-          });
-        }
-      });
-    }
+      // try to clean name
+      if(place.place_id) {
+        placeService.getDetails({placeId: place.place_id}, function (result) {
+          inputName = result.name;
+        });
+      }
+    });
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap{{ (google_api_key ? ('&key='~ google_api_key))|raw }}"
-        async defer></script>
-
-
