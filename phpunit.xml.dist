@@ -14,14 +14,14 @@
     </php>
 
     <testsuites>
-        <testsuite name="google-place-autocomplete-bundle">
-            <directory>Tests</directory>
+        <testsuite name="project">
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>Form</directory>
+            <directory>src</directory>
         </whitelist>
     </filter>
 </phpunit>

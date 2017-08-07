@@ -30,6 +30,9 @@
         }
     ],
     "autoload": {
-        "psr-4": { "Cethyworks\\GooglePlaceAutocompleteBundle\\": "" }
+        "psr-4": { "Cethyworks\\GooglePlaceAutocompleteBundle\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Cethyworks\\GooglePlaceAutocompleteBundle\\Tests\\": "tests/" }
     }
 }
