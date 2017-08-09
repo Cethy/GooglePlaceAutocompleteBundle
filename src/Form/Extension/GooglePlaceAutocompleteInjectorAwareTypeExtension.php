@@ -53,7 +53,7 @@ class GooglePlaceAutocompleteInjectorAwareTypeExtension extends AbstractTypeExte
                 return false;
             }
 
-            if(! $injectorOption['google_place_autocomplete']) {
+            if(! isset($injectorOption['google_place_autocomplete'])) {
                 $injectorOption['google_place_autocomplete'] = false;
             }
 
