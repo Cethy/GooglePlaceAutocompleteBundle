@@ -13,7 +13,8 @@ class SimpleGooglePlaceAutocompleteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'injector' => [ 'template' => $this->injectorTemplate, 'google_place_autocomplete' => true ]
+            'injector' => [ 'template' => $this->injectorTemplate ],
+            'injector_google_place_autocomplete' => true
         ));
     }
 

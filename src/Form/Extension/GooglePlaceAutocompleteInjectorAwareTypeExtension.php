@@ -39,24 +39,19 @@ class GooglePlaceAutocompleteInjectorAwareTypeExtension extends AbstractTypeExte
     }
 
     /**
-     * Add injector options
+     * Update injector options
      *
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('injector', false);
+        $resolver->setDefault('injector_google_place_autocomplete', false);
 
-        $resolver->setNormalizer('injector', function (Options $options, $injectorOption) {
+        $resolver->setNormalizer('injector_google_place_autocomplete', function (Options $options, $injectorOption) {
             // injector not enabled
             if(! $injectorOption) {
                 return false;
             }
-
-            if(! isset($injectorOption['google_place_autocomplete'])) {
-                $injectorOption['google_place_autocomplete'] = false;
-            }
-
             return $injectorOption;
         });
     }
@@ -65,8 +60,8 @@ class GooglePlaceAutocompleteInjectorAwareTypeExtension extends AbstractTypeExte
     {
         parent::buildView($view, $form, $options);
 
-        if($options['injector'] && $options['injector']['google_place_autocomplete']) {
-            $this->registerGooglePlaceAutocompleteLibraryCommand($options['injector']['google_place_autocomplete']);
+        if(isset($options['injector']) && $options['injector'] && $options['injector_google_place_autocomplete']) {
+            $this->registerGooglePlaceAutocompleteLibraryCommand($options['injector_google_place_autocomplete']);
         }
     }
 

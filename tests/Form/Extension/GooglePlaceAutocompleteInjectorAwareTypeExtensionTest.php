@@ -37,22 +37,24 @@ class GooglePlaceAutocompleteInjectorAwareTypeExtensionTest extends TestCase
     {
         return [
             'injector disabled' => [
-                ['injector' => false],
+                ['injector' => false, 'injector_google_place_autocomplete' => false],
                 ['injector' => false] ],
 
             'injector enabled, google_place_autocomplete disabled' => [
-                ['injector' => ['google_place_autocomplete' => false]],
-                ['injector' => ['google_place_autocomplete' => false]] ],
+                ['injector' => true, 'injector_google_place_autocomplete' => false],
+                ['injector' => true, 'injector_google_place_autocomplete' => false] ],
+
             'injector enabled, google_place_autocomplete enabled' => [
-                ['injector' => ['google_place_autocomplete' => true]],
-                ['injector' => ['google_place_autocomplete' => true]] ],
+                ['injector' => true, 'injector_google_place_autocomplete' => true],
+                ['injector' => true, 'injector_google_place_autocomplete' => true] ],
 
             'injector enabled, google_place_autocomplete disabled + additional data' => [
-                ['injector' => ['google_place_autocomplete' => false, 'template' => 'foo']],
-                ['injector' => ['google_place_autocomplete' => false, 'template' => 'foo']] ],
+                ['injector' => ['template' => 'foo'], 'injector_google_place_autocomplete' => false, ],
+                ['injector' => ['template' => 'foo'], 'injector_google_place_autocomplete' => false, ] ],
+
             'injector enabled, google_place_autocomplete enabled + additional data' => [
-                ['injector' => ['google_place_autocomplete' => true, 'template' => 'foo']],
-                ['injector' => ['google_place_autocomplete' => true, 'template' => 'foo']] ]
+                ['injector' => ['template' => 'foo'], 'injector_google_place_autocomplete' => true, ],
+                ['injector' => ['template' => 'foo'], 'injector_google_place_autocomplete' => true, ] ],
         ];
     }
 
@@ -74,7 +76,7 @@ class GooglePlaceAutocompleteInjectorAwareTypeExtensionTest extends TestCase
     {
         return [
             [ ['injector' => false] ],
-            [ ['injector' => ['google_place_autocomplete' => false]] ]
+            [ ['injector' => false , 'injector_google_place_autocomplete' => false] ]
         ];
     }
 
@@ -93,7 +95,7 @@ class GooglePlaceAutocompleteInjectorAwareTypeExtensionTest extends TestCase
 
     public function testBuildViewShouldRegisterCommand()
     {
-        $options = ['injector' => ['google_place_autocomplete' => true]];
+        $options = ['injector' => true, 'injector_google_place_autocomplete' => true, ];
 
         $view = new FormView();
         $form = $this->getMockBuilder(FormInterface::class)->disableOriginalConstructor()->getMock();
