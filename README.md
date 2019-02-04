@@ -6,7 +6,7 @@ Provides a Google Place Autocomplete Type, the most minimalist, unobtrusive way 
 
 ## Versions
 ### For symfony >= 3.4
-Use latest or >= v3.0
+Use latest or >= v3.1
 
 ### For symfony < 3.4
 Use 2.2 or lower
