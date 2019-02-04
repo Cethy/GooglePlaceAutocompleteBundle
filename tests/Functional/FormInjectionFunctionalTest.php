@@ -17,16 +17,11 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class FormInjectionFunctionalTest extends WebTestCase
 {
-    /**
-     * @var ContainerInterface
-     */
-    protected $container;
-
     public function setUp()
     {
         self::bootKernel();
 
-        $this->container = self::$kernel->getContainer();
+        //self::$container = self::$kernel->getContainer();
     }
 
     public function dataTestDisplayFormWithInjection()
