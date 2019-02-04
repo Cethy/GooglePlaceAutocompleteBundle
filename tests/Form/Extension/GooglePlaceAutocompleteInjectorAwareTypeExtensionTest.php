@@ -7,7 +7,7 @@ use Cethyworks\GooglePlaceAutocompleteBundle\Command\GooglePlaceAutocompleteLibr
 use Cethyworks\GooglePlaceAutocompleteBundle\Form\Extension\GooglePlaceAutocompleteInjectorAwareTypeExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -86,7 +86,7 @@ class GooglePlaceAutocompleteInjectorAwareTypeExtensionTest extends TestCase
     public function testBuildViewShouldNotRegisterCommand($options)
     {
         $view = new FormView();
-        $form = $this->getMockBuilder(FormInterface::class)->disableOriginalConstructor()->getMock();
+        $form = $this->getMockBuilder(Form::class)->disableOriginalConstructor()->getMock();
 
         $this->subscriber->expects($this->never())->method('registerCommand');
 
@@ -98,7 +98,7 @@ class GooglePlaceAutocompleteInjectorAwareTypeExtensionTest extends TestCase
         $options = ['injector' => true, 'injector_google_place_autocomplete' => true, ];
 
         $view = new FormView();
-        $form = $this->getMockBuilder(FormInterface::class)->disableOriginalConstructor()->getMock();
+        $form = $this->getMockBuilder(Form::class)->disableOriginalConstructor()->getMock();
 
         $this->subscriber->expects($this->once())->method('registerCommand')->with($this->libraryCommand);
 
