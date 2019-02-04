@@ -4,6 +4,13 @@ Provides a Google Place Autocomplete Type, the most minimalist, unobtrusive way 
 
 [![CircleCI](https://circleci.com/gh/Cethy/GooglePlaceAutocompleteBundle/tree/master.svg?style=shield)](https://circleci.com/gh/Cethy/GooglePlaceAutocompleteBundle/tree/master)
 
+## Versions
+### For symfony >= 3.4
+Use latest or >= v3.0
+
+### For symfony < 3.4
+Use 2.2 or lower
+
 
 ## Install
 

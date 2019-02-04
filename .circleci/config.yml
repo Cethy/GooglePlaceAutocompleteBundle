@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    #environment:
+    #  CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
+    #  CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+    docker:
+    - image: circleci/php:7.1
+    working_directory: ~/Cethy/GooglePlaceAutocompleteBundle
+    steps:
+    - checkout 
+    #- run: pecl install xdebug
+    #- run: echo "date.timezone = \"Europe/Paris\"" > /opt/circleci/php/$(phpenv global)/etc/conf.d/date.ini
+    - run: composer install --no-interaction
+    # Test
+    - run: vendor/bin/phpunit -c phpunit.xml.dist --coverage-html "/tmp/circleci-test-results"
+    # Save test results
+    - store_artifacts:
+        path: /tmp/circleci-test-results
+
