@@ -82,3 +82,8 @@ which will inject the necessary javascript code (with the input id & the google 
 [Cethyworks\ContentInjectorBundle](https://github.com/Cethy/ContentInjectorBundle)
 
 [Google Place Autocomplete Documentation](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete)
+
+## Roadmap
+- Update README.md with a example transforming Place into another entity
+- Update Place entity to retrieve more data
+
