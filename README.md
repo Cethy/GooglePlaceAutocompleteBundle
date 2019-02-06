@@ -34,7 +34,7 @@ Use 2.2 or lower
 
 
 ## How to use
-1\. Update (optionally) your `config.yml` with :
+1\. Add (optionally) a `config/packages/cethyworks_google_place_autocomplete.yaml` file with :
 
     cethyworks_google_place_autocomplete:
         google:
