@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ComplexGooglePlaceAutocompleteType extends AbstractType
 {
-    protected $injectorTemplate = '@CethyworksGooglePlaceAutocompleteBundle/Resources/assets/twig/complex_google_place_autocomplete_js.html.twig';
+    protected $injectorTemplate = '@CethyworksGooglePlaceAutocompleteBundle/complex_google_place_autocomplete_js.html.twig';
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

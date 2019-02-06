@@ -7,7 +7,7 @@ use Twig_Environment;
 
 class GooglePlaceAutocompleteLibraryCommand extends TwigCommand
 {
-    protected $template = '@CethyworksGooglePlaceAutocompleteBundle/Resources/assets/twig/google_place_autocomplete_library.html.twig';
+    protected $template = '@CethyworksGooglePlaceAutocompleteBundle/google_place_autocomplete_library.html.twig';
 
     /**
      * GooglePlaceAutocompleteLibraryCommand constructor.

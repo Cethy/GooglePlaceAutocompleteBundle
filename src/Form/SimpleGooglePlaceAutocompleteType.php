@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SimpleGooglePlaceAutocompleteType extends AbstractType
 {
-    protected $injectorTemplate = '@CethyworksGooglePlaceAutocompleteBundle/Resources/assets/twig/simple_google_place_autocomplete_js.html.twig';
+    protected $injectorTemplate = '@CethyworksGooglePlaceAutocompleteBundle/simple_google_place_autocomplete_js.html.twig';
 
     public function configureOptions(OptionsResolver $resolver)
     {

@@ -1,4 +1,10 @@
 services:
+    Cethyworks\GooglePlaceAutocompleteBundle\Twig\Extension\GooglePlaceAutocompleteBundleExtension:
+        arguments:
+            - "@twig.loader.filesystem"
+        tags:
+            - { name: twig.extension }
+
     Cethyworks\GooglePlaceAutocompleteBundle\Command\GooglePlaceAutocompleteLibraryCommand:
         arguments:
             - "@twig"
