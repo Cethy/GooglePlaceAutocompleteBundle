@@ -6,7 +6,7 @@ Provides a Google Place Autocomplete Type, the most minimalist, unobtrusive way 
 
 ## Versions
 ### For symfony >= 3.4
-Use latest or >= v3.1
+Use latest or >= v3.2
 
 ### For symfony < 3.4
 Use 2.2 or lower
@@ -82,3 +82,8 @@ which will inject the necessary javascript code (with the input id & the google 
 [Cethyworks\ContentInjectorBundle](https://github.com/Cethy/ContentInjectorBundle)
 
 [Google Place Autocomplete Documentation](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete)
+
+## Roadmap
+- Update README.md with a example transforming Place into another entity
+- Update Place entity to retrieve more data
+
