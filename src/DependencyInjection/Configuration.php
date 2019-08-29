@@ -4,6 +4,7 @@ namespace Cethyworks\GooglePlaceAutocompleteBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use App\Kernel;
 
 /**
  * This is the class that validates and merges configuration from your app/config files.
@@ -17,10 +18,10 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('cethyworks_google_place_autocomplete');
+        if (Kernel::VERSION_ID >= 40200) {
+            $treeBuilder = new TreeBuilder('cethyworks_google_place_autocomplete');
 
-        $rootNode
+            $treeBuilder->getRootNode()
             ->children()
                 ->arrayNode('google')
                     ->addDefaultsIfNotSet()
@@ -34,6 +35,25 @@ class Configuration implements ConfigurationInterface
                 ->end() // google
             ->end();
         ;
+        } else {
+            $treeBuilder = new TreeBuilder();
+            $rootNode = $treeBuilder->root('cethyworks_google_place_autocomplete');
+
+            $rootNode
+                ->children()
+                    ->arrayNode('google')
+                        ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('api_key')
+                                ->isRequired()
+                                ->cannotBeEmpty()
+                                ->defaultValue('')
+                            ->end()
+                        ->end()
+                    ->end() // google
+                ->end();
+            ;
+        }
 
         return $treeBuilder;
     }
