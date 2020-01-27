@@ -15,11 +15,12 @@ Use 2.2 or lower
 ## Install
 
 1\. Composer require
-
+```
     $ composer require cethyworks/google-place-autocomplete-bundle
+```
 
 2\. Register bundles
-
+```php
     // AppKernel.php
     class AppKernel extends Kernel
     {
@@ -31,18 +32,63 @@ Use 2.2 or lower
                 new Cethyworks\GooglePlaceAutocompleteBundle\CethyworksGooglePlaceAutocompleteBundle(),
             ];
             // ...
-
+        }
+    }
+```
 
 ## How to use
 1\. Add (optionally) a `config/packages/cethyworks_google_place_autocomplete.yaml` file with :
-
+```yaml
     cethyworks_google_place_autocomplete:
         google:
             api_key: 'your_api_key'
-
+```
 2\. Use `Cethyworks\GooglePlaceAutocompleteBundle\Form\SimpleGooglePlaceAutocompleteType` into your forms ;
   
 3\. Done !
+
+## Get API key from custom provider
+If you need to get your API key from another way. You can use a custom provider
+
+Example of custom provider with API key stored in database.
+
+```yaml
+    cethyworks_google_place_autocomplete:
+        google:
+            api_key_provider: 'Acme\FooBundle\Provider\BarApiKeyTestProvider'
+```
+
+```php
+namespace Acme\FooBundle\Provider;
+
+use Doctrine\ORM\EntityManager;
+use Cethyworks\GooglePlaceAutocompleteBundle\Provider\ApiKeyProviderInterface;
+
+class BarApiKeyTestProvider implements ApiKeyProviderInterface
+{
+    /** @var EntityManager */
+    protected $em;
+
+    /**
+     * @param EntityManager $em
+     */
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleApiKey(): string
+    {
+        $bar = $this->em->getRepository('FooBundle:Bar')->findOneBy([
+            'enabled' => true,
+        ]);
+        return $bar->getApiKey();
+    }
+}
+```
 
 
 ## Get more data from the Google Place API
