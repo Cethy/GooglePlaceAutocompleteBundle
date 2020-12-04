@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder( 'cethyworks_google_place_autocomplete' );
-        $rootNode = $treeBuilder;
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
