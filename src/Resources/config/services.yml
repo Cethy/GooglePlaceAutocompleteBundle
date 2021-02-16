@@ -5,10 +5,14 @@ services:
         tags:
             - { name: twig.extension }
 
+    Cethyworks\GooglePlaceAutocompleteBundle\Provider\DefaultApiKeyProvider:
+        arguments:
+            - "%cethyworks.google_place_autocomplete.google_api_key%"
+
     Cethyworks\GooglePlaceAutocompleteBundle\Command\GooglePlaceAutocompleteLibraryCommand:
         arguments:
             - "@twig"
-            - "%cethyworks.google_place_autocomplete.google_api_key%"
+            - "@Cethyworks\\GooglePlaceAutocompleteBundle\\Provider\\DefaultApiKeyProvider"
 
     Cethyworks\GooglePlaceAutocompleteBundle\Form\Extension\GooglePlaceAutocompleteInjectorAwareTypeExtension:
         arguments:

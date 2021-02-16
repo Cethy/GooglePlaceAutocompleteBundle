@@ -2,6 +2,7 @@
 
 namespace Cethyworks\GooglePlaceAutocompleteBundle\DependencyInjection;
 
+use Cethyworks\GooglePlaceAutocompleteBundle\Provider\DefaultApiKeyProvider;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -25,9 +26,11 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('google')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('api_key')
-                            ->isRequired()
+                        ->scalarNode('api_key_provider')
+                            ->defaultValue(DefaultApiKeyProvider::class)
                             ->cannotBeEmpty()
+                        ->end()
+                        ->scalarNode('api_key')
                             ->defaultValue('')
                         ->end()
                     ->end()

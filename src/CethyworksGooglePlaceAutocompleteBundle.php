@@ -2,6 +2,7 @@
 
 namespace Cethyworks\GooglePlaceAutocompleteBundle;
 
+use Cethyworks\GooglePlaceAutocompleteBundle\DependencyInjection\Compiler\ApiKeyProviderCompilerPass;
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -13,6 +14,7 @@ class CethyworksGooglePlaceAutocompleteBundle extends Bundle
         parent::build($container);
 
         $this->addRegisterMappingsPass($container);
+        $container->addCompilerPass(new ApiKeyProviderCompilerPass());
     }
 
     /**
